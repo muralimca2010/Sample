@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+
+
+<androidx.appcompat.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/toolbar"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
-
-  <androidx.appcompat.widget.Toolbar
-      android:id="@+id/toolbar"
-      android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentStart="true"
+    android:gravity="center_vertical"
+    android:background="@color/colorPrimary">
+  <Spinner
+      android:id="@+id/categorySpinner"
+      android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_alignParentStart="true"
-      android:background="@color/colorPrimary"
-      tools:ignore="MissingConstraints" />
+      android:layout_marginLeft="10dp" />
 
-  <include layout="@layout/activity_user"/>
-</androidx.appcompat.widget.LinearLayoutCompat>
+  <EditText
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="right"
+      android:hint="Name" />
+</androidx.appcompat.widget.Toolbar>
+

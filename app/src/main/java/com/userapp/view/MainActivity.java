@@ -2,6 +2,7 @@ package com.userapp.view;
 
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 
 import androidx.annotation.Nullable;
@@ -40,13 +41,11 @@ public class MainActivity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_main);
-
-//    Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-////    toolbar.setTitle("My Toolbar");
-//    setSupportActionBar(toolbar);
 
     activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+    Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+    toolbar.setTitle("");
+    setSupportActionBar(toolbar);
 
     mainActivityViewModel = ViewModelProviders.of(this).get(MainActivityViewModel.class);
 
@@ -92,12 +91,12 @@ public class MainActivity extends AppCompatActivity {
     }
   }
 
-//  @Override
-//  public boolean onCreateOptionsMenu(Menu menu) {
-//
-//    MenuInflater menuInflater = getMenuInflater();
-//    menuInflater.inflate(R.menu.menu, menu);
-//
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu) {
+
+    MenuInflater menuInflater = getMenuInflater();
+    menuInflater.inflate(R.menu.menu, menu);
+
 //    //getting the search view from the menu
 //    MenuItem searchViewItem = menu.findItem(R.id.menuSearch);
 //
@@ -130,27 +129,46 @@ public class MainActivity extends AppCompatActivity {
 //        return false;
 //      }
 //    });
-//
-//    return true;
-//  }
-//
-//  @Override
-//  public boolean onOptionsItemSelected(MenuItem item) {
-//
-//    switch(item.getItemId()){
-//      case R.id.menuAbout:
-//        Toast.makeText(this, "You clicked about", Toast.LENGTH_SHORT).show();
-//        break;
-//
-//      case R.id.menuSettings:
-//        Toast.makeText(this, "You clicked settings", Toast.LENGTH_SHORT).show();
-//        break;
-//
-//      case R.id.menuLogout:
-//        Toast.makeText(this, "You clicked logout", Toast.LENGTH_SHORT).show();
-//        break;
-//
-//    }
-//    return true;
-//  }
+
+    return true;
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item) {
+
+    switch(item.getItemId()){
+
+      case R.id.bck_btn:
+        Toast.makeText(this, "You clicked Back Button", Toast.LENGTH_SHORT).show();
+        break;
+
+      case R.id.addUser:
+//        Toast.makeText(this, "You clicked Add User", Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(MainActivity.this, AddNewUser.class);
+        startActivity(i);
+        break;
+
+      case R.id.menuSearch:
+        Toast.makeText(this, "You clicked Search", Toast.LENGTH_SHORT).show();
+        break;
+
+      case R.id.notify:
+        Toast.makeText(this, "You clicked Notification", Toast.LENGTH_SHORT).show();
+        break;
+
+      case R.id.menuAbout:
+        Toast.makeText(this, "You clicked about", Toast.LENGTH_SHORT).show();
+        break;
+
+      case R.id.menuSettings:
+        Toast.makeText(this, "You clicked settings", Toast.LENGTH_SHORT).show();
+        break;
+
+      case R.id.menuLogout:
+        Toast.makeText(this, "You clicked logout", Toast.LENGTH_SHORT).show();
+        break;
+
+    }
+    return true;
+  }
 }

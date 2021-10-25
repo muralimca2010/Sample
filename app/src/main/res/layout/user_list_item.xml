@@ -32,8 +32,8 @@
           tools:ignore="MissingClass">
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/ivUserProfile"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_marginBottom="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
@@ -57,7 +57,7 @@
             android:padding="4dp"
             android:text="@{user.firstName.concat(@string/space).concat(user.lastName)}"
             android:textColor="@color/textDarkPrimary"
-            android:textSize="18sp"
+            android:textSize="14sp"
             bind:layout_constraintEnd_toEndOf="parent"
             bind:layout_constraintStart_toEndOf="@+id/ivUserProfile"
             bind:layout_constraintTop_toTopOf="parent"
@@ -75,7 +75,7 @@
             android:padding="4dp"
             android:text="@{`Email - ` + user.email}"
             android:textColor="@color/textDarkSecondary"
-            android:textSize="16sp"
+            android:textSize="12sp"
             bind:layout_constraintEnd_toEndOf="parent"
             bind:layout_constraintStart_toEndOf="@+id/ivUserProfile"
             bind:layout_constraintTop_toBottomOf="@+id/tvName"

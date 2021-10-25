@@ -21,29 +21,19 @@
 
     <item
         android:orderInCategory="100"
+
+        android:title="My Profile"
+        app:showAsAction="always" />
+
+
+    <item
+        android:orderInCategory="100"
         android:title=""
         app:showAsAction="always" />
 
-
     <item
-        android:id="@+id/addUser"
-        android:icon="@drawable/ic_baseline_add_24"
         android:orderInCategory="100"
-        android:title="AddUser"
-        app:showAsAction="always" />
-    <!-- our search option -->
-    <item
-        android:id="@+id/menuSearch"
-        android:icon="@drawable/ic_baseline_search_24"
-        android:orderInCategory="100"
-        android:title="Search"
-        app:showAsAction="always" />
-
-    <item
-        android:id="@+id/notify"
-        android:icon="@drawable/ic_baseline_notifications_none_24"
-        android:orderInCategory="100"
-        android:title="Notification"
+        android:title=""
         app:showAsAction="always" />
 
     <item
