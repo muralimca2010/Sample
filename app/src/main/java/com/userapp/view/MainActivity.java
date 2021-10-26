@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements UserOnClickEvent 
   }
 
   public void getUsers() {
-    mainActivityViewModel.getMoviesPagedList().observe(this, new Observer<PagedList<User>>() {
+    mainActivityViewModel.getUsersPagedList().observe(this, new Observer<PagedList<User>>() {
       @Override
       public void onChanged(@Nullable PagedList<User> usersFromLiveData) {
         users = usersFromLiveData;
@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements UserOnClickEvent 
   }
 
   private void showOnRecyclerView() {
-    recyclerView = activityMainBinding.rvMovies;
+    recyclerView = activityMainBinding.rvUser;
     userAdapter = new UserAdapter(this,this);
     userAdapter.submitList(users);
 

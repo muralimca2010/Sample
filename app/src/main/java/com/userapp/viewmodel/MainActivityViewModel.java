@@ -53,7 +53,7 @@ public class MainActivityViewModel extends AndroidViewModel {
     return userRepository.getMutableLiveData();
   }
 
-  public LiveData<PagedList<User>> getMoviesPagedList() {
+  public LiveData<PagedList<User>> getUsersPagedList() {
     return usersPagedList;
   }
 }
