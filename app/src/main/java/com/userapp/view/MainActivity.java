@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.paging.PagedList;
@@ -26,17 +27,19 @@ import android.widget.Toast;
 
 import com.userapp.R;
 import com.userapp.adapter.UserAdapter;
+import com.userapp.adapter.UserOnClickEvent;
 import com.userapp.databinding.ActivityMainBinding;
 import com.userapp.model.User;
 import com.userapp.viewmodel.MainActivityViewModel;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements UserOnClickEvent {
   private PagedList<User> users;
   private RecyclerView recyclerView;
   private UserAdapter userAdapter;
   private SwipeRefreshLayout swipeRefreshLayout;
   private MainActivityViewModel mainActivityViewModel;
   private ActivityMainBinding activityMainBinding;
+  private UserOnClickEvent clickEvent;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
   private void showOnRecyclerView() {
     recyclerView = activityMainBinding.rvMovies;
-    userAdapter = new UserAdapter(this);
+    userAdapter = new UserAdapter(this,this);
     userAdapter.submitList(users);
 
     if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
@@ -170,5 +173,21 @@ public class MainActivity extends AppCompatActivity {
 
     }
     return true;
+  }
+
+  @Override
+  public void onUserClick(User user) {
+
+            Intent intent = new Intent(this, UserActivity.class);
+            intent.putExtra("user", user);
+            startActivity(intent);
+//    Bundle args = new Bundle();
+//    args.putParcelable("user", user);
+//    UserProfileFragment fragment = new UserProfileFragment();
+//    fragment.setArguments(args);
+//    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+//    transaction.replace(R.id.frameLayout, fragment);
+//    transaction.commit();
+
   }
 }

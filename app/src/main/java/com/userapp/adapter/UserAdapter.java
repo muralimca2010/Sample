@@ -19,10 +19,12 @@ import com.userapp.view.UserActivity;
 
 public class UserAdapter extends PagedListAdapter<User, UserAdapter.UserViewHolder> {
   private Context context;
+  UserOnClickEvent listener;
 
-  public UserAdapter(Context context) {
+  public UserAdapter(Context context, UserOnClickEvent listener) {
     super(User.CALLBACK);
     this.context = context;
+    this.listener = listener;
   }
 
   @NonNull
@@ -60,10 +62,12 @@ public class UserAdapter extends PagedListAdapter<User, UserAdapter.UserViewHold
           if (position != RecyclerView.NO_POSITION) {
 
             User selectedUser = getItem(position);
+            listener.onUserClick(selectedUser);
 
-            Intent intent = new Intent(context, UserActivity.class);
-            intent.putExtra("user", selectedUser);
-            context.startActivity(intent);
+//            Intent intent = new Intent(context, UserActivity.class);
+//            intent.putExtra("user", selectedUser);
+//            context.startActivity(intent);
+
           }
         }
       });
