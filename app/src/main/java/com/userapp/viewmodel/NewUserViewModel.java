@@ -53,7 +53,8 @@ public class NewUserViewModel extends AndroidViewModel {
 
         progressBar.set(View.GONE);
 
-        showToast(""+response.body().getName().toString()+"  : Inserted Successfully!");
+        showToast(""+response.body().getName().toString()+"  : Successfully createdAt: "+
+                response.body().getCreatedAt().toString());
 
 
       }
