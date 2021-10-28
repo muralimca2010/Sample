@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.appcompat.widget.Toolbar;
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -25,6 +26,9 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.userapp.R;
 import com.userapp.databinding.ActivityUserBinding;
 import com.userapp.model.User;
+import com.userapp.viewmodel.NewUserViewModel;
+import com.userapp.viewmodel.UpdateUserViewModel;
+
 import java.util.Objects;
 
 
@@ -32,13 +36,14 @@ public class UserActivity extends AppCompatActivity {
 
   private User user;
   private ActivityUserBinding userActivityBinding;
+  private UpdateUserViewModel updateUserViewModel;
 
   @SuppressLint("ResourceAsColor")
   @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
     userActivityBinding = DataBindingUtil.setContentView(this, R.layout.activity_user);
-
+    updateUserViewModel = ViewModelProviders.of(this).get(UpdateUserViewModel.class);
     Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
     toolbar.setTitle("");
     setSupportActionBar(toolbar);
@@ -84,6 +89,9 @@ public class UserActivity extends AppCompatActivity {
           et_address.setEnabled(false);
           et_account_type.setEnabled(false);
           et_member.setEnabled(false);
+
+          updateUserViewModel.sendUpdateRequest(et_name.getText().toString(),
+                  et_email.getText().toString());
 
         }
       }
